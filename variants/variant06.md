@@ -12,3 +12,4 @@ Sample output:
 2. 2006-10-01 - 1130 - 34%
 3. 2006-10-02 - 1000 - 30%
 ```
+cut -f4 -f10 -d' ' log.txt |  awk ' {if (substr($1, 1, 12)in arr) { arr[substr($1, 1, 12)]++;} else {arr[substr($1, 1, 12)]=$2}} END { for (i in arr) print arr[i],i,arr[i]*100/541881 }'| sort  -k1n| tail -r -10|awk '{print substr($2,2,12),"-", $1,"-", $3,"%"}'
